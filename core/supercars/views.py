@@ -8,8 +8,9 @@ from .models import Post
 # Create your views here.
 def get_homepage(request):
     if request.method == "GET":
-        context = {"message": "Welcome!"}
-        return render(request, "homepage.html", context)
+        posts = Post.objects.all()
+        context = { "all_posts": posts }
+        return render(request, "index.html", context)
     else:
         return HttpResponse("Invalid, only GET method is allowed")
     
@@ -40,3 +41,14 @@ class PostDeleteView(DeleteView):
     model = Post
     template_name = "confirm_delete.html"
     success_url = reverse_lazy("posts-all")
+
+class CarMakePostListView(ListView):
+    model = Post
+    template_name = "index.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(CarMakePostListView, self).get_context_data(*args, **kwargs)
+        info = self.request.GET.get("carmake", "").lower()
+        results = Post.objects.filter(subject=info)
+        context["all_posts"] = results
+        return context

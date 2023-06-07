@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 
 class Post(models.Model):
-    make = models.CharField(max_length = 100)
+    make = models.CharField(max_length = 100, blank=False, default="")
     model = models.CharField(max_length = 100)
     description = models.TextField(max_length = 1000, blank=True, default="")
     max_speed = models.IntegerField()

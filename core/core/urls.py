@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from supercars.views import get_homepage
-from supercars.views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
+from supercars.views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, CarMakePostListView
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -30,6 +30,7 @@ urlpatterns = [
     path("supercars/create/", PostCreateView.as_view(), name="posts-create"),
     path("supercars/update/<int:pk>/", PostUpdateView.as_view(), name="posts-update"),
     path("supercars/delete/<int:pk>/", PostDeleteView.as_view(), name="posts-delete"),
+    path("supercars/make/", CarMakePostListView.as_view(), kwargs={"carmake":""}, name="carmake-search"),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
