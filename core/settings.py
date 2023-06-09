@@ -154,7 +154,7 @@ if USE_SPACES:
     # AWS_S3_ENDPOINT_URL = 'https://supercars.nyc3.cdn.digitaloceanspaces.com'
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
     # public media settings
-    PUBLIC_MEDIA_LOCATION = 'images'
+    PUBLIC_MEDIA_LOCATION = 'media'
     MEDIA_URL = f'https://{AWS_S3_ENDPOINT_URL}/{PUBLIC_MEDIA_LOCATION}/'
     
     DEFAULT_FILE_STORAGE = "core.storage_backends.CustomS3Boto3Storage"
