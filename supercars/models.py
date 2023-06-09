@@ -7,7 +7,7 @@ class Post(models.Model):
     description = models.TextField(max_length = 1000, blank=True, default="")
     max_speed = models.IntegerField()
     date = models.DateTimeField(auto_now_add = True)
-    # image = models.ImageField(upload_to="images/", blank=True, default="images/nocar.jpg")
+    image = models.ImageField(upload_to="images/", blank=True, default="images/nocar.jpg")
 
     def __str__(self):
         return f"{self.make} {self.model}"
